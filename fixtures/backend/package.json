@@ -1,0 +1,8 @@
+{
+  "name": "convex-contract-exporter-fixture-backend",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "convex": "1.50.0"
+  }
+}

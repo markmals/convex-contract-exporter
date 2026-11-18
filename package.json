@@ -1,0 +1,24 @@
+{
+  "name": "@markmals/convex-contract-exporter",
+  "version": "0.1.0",
+  "description": "Source-semantic Convex contracts for non-TypeScript clients",
+  "type": "module",
+  "bin": { "convex-contract-export": "dist/cli.js" },
+  "exports": { ".": "./dist/exporter.js" },
+  "files": ["dist", "README.md"],
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test --test-concurrency=1 test/*.test.mjs",
+    "fixture:export": "node dist/cli.js --project fixtures/backend/convex/tsconfig.json --output fixtures/backend/contract.json",
+    "fixture:check": "npm run fixture:export -- --check",
+    "fixture:backend:up": "node scripts/local-backend.mjs up",
+    "fixture:backend:down": "node scripts/local-backend.mjs down",
+    "fixture:backend:token": "node scripts/local-backend.mjs token",
+    "prepare": "npm run build"
+  },
+  "dependencies": { "typescript": "5.9.3" },
+  "devDependencies": { "@types/node": "22.19.1", "convex": "1.50.0" },
+  "peerDependencies": { "convex": "1.50.0" },
+  "repository": { "type": "git", "url": "git+https://github.com/markmals/convex-contract-exporter.git" }
+}

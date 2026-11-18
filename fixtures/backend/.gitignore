@@ -1,0 +1,2 @@
+# Local backend binary, data, secrets, and logs from scripts/local-backend.mjs.
+/.convex/
