@@ -22,10 +22,10 @@ TypeScript is a regular dependency of the exporter, which compiles your backend 
 Add the exporter to the backend repository as a development dependency, pinned to a commit:
 
 ```sh
-npm install --save-dev "github:markmals/convex-contract-exporter#<commit>"
+npm install --save-dev "git+https://github.com/markmals/convex-contract-exporter.git#<commit>"
 ```
 
-The package is distributed from GitHub rather than the npm registry. For Git dependencies with a `prepare` script, npm installs the package's own dependencies and runs `prepare`, which builds `dist/`. The backend itself must depend on `convex` 1.50.0, which is a peer dependency of the exporter.
+Replace `<commit>` with a full commit SHA from this repository. The package is distributed from public GitHub over HTTPS without authentication; it is not published to the npm registry. For Git dependencies with a `prepare` script, npm installs the package's own dependencies and runs `prepare`, which builds `dist/`. The backend itself must depend on `convex` 1.50.0, which is a peer dependency of the exporter.
 
 ## Usage
 
@@ -158,3 +158,7 @@ npm run fixture:backend:down
 The fixture includes live message subscriptions, channel and message mutations, actions, document and storage IDs, discriminated unions, required-nullable and optional fields, pagination, fixed tuples, bytes, signed Int64 limits, nonfinite Float64 values, and commit timestamps. `values:echo` and `actions:echo` round-trip caller-supplied values; `values:special` supplies edge values without arguments. `errors:check` exercises application and server failures. Internal functions and HTTP actions are excluded from the exported client contract.
 
 The launcher generates the instance secret, admin key, and RSA signing key under ignored `fixtures/backend/.convex/local-backend/` (directory mode 0700, secret files mode 0600). `live.json` contains connection details for trusted local integration runners. Never commit or print that file. `auth:whoami` accepts test JWTs from `node scripts/local-backend.mjs token`; redirect that command's output into your test process or an ignored private file instead of logging it. These tokens and keys are disposable local credentials, not production authentication.
+
+## License
+
+Project-owned code is available under the [MIT License](LICENSE), copyright 2026 Mark Malstrom. Dependencies retain their own licenses.
